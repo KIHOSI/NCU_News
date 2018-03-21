@@ -4,4 +4,6 @@
     <string name="myActivity">我的活動</string>
     <string name="history">瀏覽紀錄</string>
     <string name="settings">設定</string>
+    <string name="search_title">搜尋標題</string>
+    <string name="search_hint">提示</string>
 </resources>

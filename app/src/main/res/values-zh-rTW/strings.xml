@@ -6,4 +6,14 @@
     <string name="settings">設定</string>
     <string name="search_title">搜尋標題</string>
     <string name="search_hint">提示</string>
+    <array name="officeName_array">
+        <item>諮商中心</item>
+        <item>職涯中心</item>
+        <item>服務學習中心</item>
+        <item>尤努斯</item>
+        <item>招生組</item>
+        <item>教學發展中心</item>
+        <item>國際處</item>
+        <item>生輔組</item>
+    </array>
 </resources>

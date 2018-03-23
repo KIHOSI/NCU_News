@@ -14,6 +14,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 
@@ -26,6 +30,24 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //使用Spinner
+        Spinner notify = (Spinner)findViewById(R.id.notify_spinner);
+        final ArrayAdapter<CharSequence> nAdapter = ArrayAdapter.createFromResource(this,R.array.officeName_array,android.R.layout.simple_spinner_item);
+        nAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); //設定一個比較美觀的版面配置
+        notify.setAdapter(nAdapter);
+        //事件處理
+        notify.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) { //有點選選項
+                Toast.makeText(MainActivity.this,nAdapter.getItem(position),Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) { //沒點選選項
+
+            }
+        });
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);  右下角紅色的懸浮按鈕(app_bar_main.xml)
         fab.setOnClickListener(new View.OnClickListener() {

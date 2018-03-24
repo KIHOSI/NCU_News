@@ -10,6 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" /><!--設定此Activity頁面為首頁-->
+
+                <category android:name="android.intent.category.LAUNCHER" /><!--應用程式安裝完畢後會自動啟動-->
+            </intent-filter>
+        </activity>
+
+
         <!-- Points to searchable activity so the whole app can invoke search. -->
         <meta-data
             android:name="android.app.default_searchable"
@@ -30,17 +43,6 @@
                 android:resource="@xml/searchable"/>
         </activity>
 
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" /><!--設定此Activity頁面為首頁-->
-
-                <category android:name="android.intent.category.LAUNCHER" /><!--應用程式安裝完畢後會自動啟動-->
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>

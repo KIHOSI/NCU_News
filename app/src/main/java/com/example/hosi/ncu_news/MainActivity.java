@@ -2,6 +2,7 @@ package com.example.hosi.ncu_news;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -11,14 +12,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity
@@ -45,6 +54,17 @@ public class MainActivity extends AppCompatActivity
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) { //沒點選選項
+
+            }
+        });
+
+        //使用ListView
+        ListView activityListView = (ListView) findViewById(R.id.activity_list);
+        activityListView.setAdapter(new ActivityAdapter(this));
+        activityListView.setOnItemClickListener(new AdapterView.OnItemClickListener() { //事件處理
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) { //點下去會跳到活動詳細內容(activity_activitys_content)
+
 
             }
         });
@@ -152,6 +172,55 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    //ListView怎麼顯現
+    private class ActivityAdapter extends BaseAdapter{ //從BaseAdapter衍生出一個新的class，非匿名inner class
+        private LayoutInflater layoutInflater;
+        private List<Activity> activityList;
+
+        public ActivityAdapter(Context context){
+            layoutInflater = LayoutInflater.from(context);
+
+            activityList = new ArrayList<>(); //增加活動列表內容，時間、類別、活動標題
+            activityList.add(new Activity(1,1070310,"工作坊","工作方標題"));
+            activityList.add(new Activity(2,1070315,"活動","活動標題"));
+            activityList.add(new Activity(3,1070320,"演講","演講標題"));
+
+        }
+
+        @Override
+        public int getCount() {
+            return activityList.size();
+        } //得知有多少count，預留多少位置
+
+        @Override
+        public Object getItem(int position) {
+            return activityList.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return activityList.get(position).getId();
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup viewGroup) {
+            if (convertView == null) {
+                convertView = layoutInflater.inflate(R.layout.listview_item, viewGroup, false); //原本layout什麼都沒有，inflate展開view， inflate就是把xml轉成view
+                if (position % 2 == 1)
+                    convertView.setBackgroundColor(Color.BLUE);
+                if (position % 2 == 0)
+                    convertView.setBackgroundColor(Color.YELLOW);
+            }
+
+            Activity activity = activityList.get(position);
+            TextView idTextView = (TextView) convertView.findViewById(R.id.tvId);
+            TextView timeTextView = (TextView) convertView.findViewById(R.id.tvTime);
+            TextView typeTextView = (TextView) convertView.findViewById(R.id.tvType);
+            TextView titleTextView = (TextView) convertView.findViewById(R.id.tvTitle);
+            return convertView;
+        }
     }
 
 }

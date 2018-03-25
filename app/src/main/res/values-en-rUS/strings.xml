@@ -16,4 +16,6 @@
         <item>Office of International Affairs</item>
         <item>Office of Student Affairs</item>
     </array>
+    <string name="notification_useable">Notification</string>
+    <string name="language_choose">Choose Language</string>
 </resources>

@@ -2,6 +2,7 @@ package com.example.hosi.ncu_news;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -63,9 +64,15 @@ public class MainActivity extends AppCompatActivity
         activityListView.setAdapter(new ActivityAdapter(this));
         activityListView.setOnItemClickListener(new AdapterView.OnItemClickListener() { //事件處理
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) { //點下去會跳到活動詳細內容(activity_activitys_content)
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) { //點下去會跳到活動詳細內容
+                //測試
+                Activity activity = (Activity) adapterView.getItemAtPosition(position);
+                String text = "ID = " + activity.getId();
+                Toast.makeText(MainActivity.this, text, Toast.LENGTH_SHORT).show(); //顯示點選的ID
 
-
+                Intent intent = new Intent();
+                intent.setClass(MainActivity.this,InnercontentActivity.class); //轉換到InnercontentActivity.java檔案
+                startActivity(intent); //切換Activity
             }
         });
 
@@ -176,7 +183,7 @@ public class MainActivity extends AppCompatActivity
 
     //ListView怎麼顯現
     private class ActivityAdapter extends BaseAdapter{ //從BaseAdapter衍生出一個新的class，非匿名inner class
-        private LayoutInflater layoutInflater;
+        private LayoutInflater layoutInflater; //引入介面
         private List<Activity> activityList;
 
         public ActivityAdapter(Context context){
@@ -215,10 +222,18 @@ public class MainActivity extends AppCompatActivity
             }
 
             Activity activity = activityList.get(position);
-            TextView idTextView = (TextView) convertView.findViewById(R.id.tvId);
-            TextView timeTextView = (TextView) convertView.findViewById(R.id.tvTime);
-            TextView typeTextView = (TextView) convertView.findViewById(R.id.tvType);
-            TextView titleTextView = (TextView) convertView.findViewById(R.id.tvTitle);
+            TextView idTextView = (TextView) convertView.findViewById(R.id.tvId); //顯示id
+            idTextView.setText(String.valueOf(activity.getId())); //要將int轉string
+
+            TextView timeTextView = (TextView) convertView.findViewById(R.id.tvTime); //顯示time
+            timeTextView.setText(String.valueOf(activity.getTime()));
+
+            TextView typeTextView = (TextView) convertView.findViewById(R.id.tvType); //顯示type
+            typeTextView.setText(activity.getType());
+
+            TextView titleTextView = (TextView) convertView.findViewById(R.id.tvTitle); //顯示title
+            titleTextView.setText(activity.getTitle());
+
             return convertView;
         }
     }

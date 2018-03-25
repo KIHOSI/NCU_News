@@ -30,8 +30,7 @@
 
         <!-- 啟動模式設為 singleTop, 才不會每一次查詢, 都要建立 1 個新的 activity -->
         <activity
-            android:name=".SearchResultActivity"
-            android:launchMode="singleTop">
+            android:name=".SearchResultActivity"> <!--android:launchMode="singleTop"-->
 
             <!-- 加入下面的 intent-filter 和 meta-data -->
             <intent-filter>
@@ -43,6 +42,9 @@
                 android:resource="@xml/searchable"/>
         </activity>
 
+        <activity android:name=".InnercontentActivity"> <!--新增InnercontentActivity.java-->
+
+        </activity>
     </application>
 
 </manifest>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.hosi.ncu_news.MainActivity"
-    tools:showIn="@layout/app_bar_main">
+    tools:showIn="@layout/app_bar_main"> <!--把app_bar_main叫近來-->
 
     <RelativeLayout
         android:layout_width="372dp"

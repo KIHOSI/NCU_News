@@ -11,9 +11,6 @@ public class InnercontentActivity  extends AppCompatActivity { /*要extends AppC
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_innercontent);
-        /*setContentView(R.layout.activity_innercontent); //開啟activity_innercontent畫面
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar2);
-        setSupportActionBar(toolbar);*/
+        setContentView(R.layout.content_innercontent); // 跳到content_innercontent畫面
     }
 }

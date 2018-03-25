@@ -5,39 +5,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.hosi.ncu_news.MainActivity"
-    tools:showIn="@layout/app_bar_main"> <!--把app_bar_main叫近來-->
+    tools:context="com.example.hosi.ncu_news.MainActivity">
+    <!--ConstraintLayout 可以給元件設定一些constraint，自由在版面特定位置-->
 
-    <RelativeLayout
-        android:layout_width="372dp"
-        android:layout_height="500dp"
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <Spinner
+        android:id="@+id/notify_spinner"
+        android:layout_width="327dp"
+        android:layout_height="27dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/activity_list"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="8dp"> <!--相對位置-->
+        app:layout_constraintTop_toTopOf="@+id/appBarLayout"
+        app:layout_constraintVertical_bias="0.902" />
+    <!--設定contraint(上下左右都要設定)-->
 
-        <!--顯示搜尋的文字-->
-
-        <Spinner
-            android:id="@+id/notify_spinner"
-            android:layout_width="327dp"
-            android:layout_height="27dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="29dp"
-            tools:layout_editor_absoluteY="16dp" />
-
-        <ListView
-            android:id="@+id/activity_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/notify_spinner"
-            android:layout_marginTop="11dp" />
-    </RelativeLayout>
+    <ListView
+        android:id="@+id/activity_list"
+        android:layout_width="384dp"
+        android:layout_height="451dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/notify_spinner"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.462" />
+    <!--設定contraint(上下左右都要設定)-->
 
 </android.support.constraint.ConstraintLayout>

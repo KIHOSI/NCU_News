@@ -16,4 +16,6 @@
         <item>國際處</item>
         <item>生輔組</item>
     </array>
+    <string name="notification_useable">啟用推播通知</string>
+    <string name="language_choose">語言選擇</string>
 </resources>

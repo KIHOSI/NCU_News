@@ -9,19 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
-
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" /><!--設定此Activity頁面為首頁-->
+                <action android:name="android.intent.action.MAIN" /> <!-- 設定此Activity頁面為首頁 -->
 
-                <category android:name="android.intent.category.LAUNCHER" /><!--應用程式安裝完畢後會自動啟動-->
+                <category android:name="android.intent.category.LAUNCHER" /> <!-- 應用程式安裝完畢後會自動啟動 -->
             </intent-filter>
         </activity>
-
 
         <!-- Points to searchable activity so the whole app can invoke search. -->
         <meta-data
@@ -29,8 +26,8 @@
             android:value=".SearchResultActivity" />
 
         <!-- 啟動模式設為 singleTop, 才不會每一次查詢, 都要建立 1 個新的 activity -->
-        <activity
-            android:name=".SearchResultActivity"> <!--android:launchMode="singleTop"-->
+        <activity android:name=".SearchResultActivity"> <!-- android:launchMode="singleTop" -->
+
 
             <!-- 加入下面的 intent-filter 和 meta-data -->
             <intent-filter>
@@ -39,12 +36,12 @@
 
             <meta-data
                 android:name="android.app.searchable"
-                android:resource="@xml/searchable"/>
+                android:resource="@xml/searchable" />
         </activity>
-
-        <activity android:name=".InnercontentActivity"> <!--新增InnercontentActivity.java-->
+        <activity android:name=".InnercontentActivity"> <!-- 新增InnercontentActivity.java -->
 
         </activity>
+        <activity android:name=".SettingsActivity"></activity>
     </application>
 
 </manifest>

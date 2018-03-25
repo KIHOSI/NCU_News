@@ -41,7 +41,10 @@
         <activity android:name=".InnercontentActivity"> <!-- 新增InnercontentActivity.java -->
 
         </activity>
-        <activity android:name=".SettingsActivity"></activity>
+        <activity android:name=".SettingsActivity" />
+        <activity
+            android:name=".LanguageChooseActivity"
+            android:theme="@android:style/Theme.Dialog" />
     </application>
 
 </manifest>
